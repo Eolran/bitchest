@@ -1,0 +1,29 @@
+.sidebar {
+    width: 20em;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    background-color: rgb(50, 50, 50);
+    border-right: 2px black solid;
+}
+.sidebar img {
+    width: 15em;
+    margin-bottom: 20%;
+}
+
+.infobar {
+    background-color: rgb(50, 50, 50);
+    border-bottom: 2px black solid;
+    width: 100%;
+}
+.infobar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    padding-top: 5px;
+}
+.infobar li {
+    margin: 0 10px;
+}
