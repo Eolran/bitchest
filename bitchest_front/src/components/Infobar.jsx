@@ -4,9 +4,7 @@ function Infobar() {
   return (
     <div className='infobar'>
         <ul>
-            <li><a href="">Visualisation graphique</a></li>
-            <li><a href="">Votre portefeuille</a></li>
-            <li><a href="">Déconnexion</a></li>
+            <li><a href="">Créer une liste des 10 cryptos (quand on clic dessus on a une charte graphique d'évolution)</a></li>
         </ul>
     </div>
   )
