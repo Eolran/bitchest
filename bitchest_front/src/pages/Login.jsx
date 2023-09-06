@@ -26,7 +26,7 @@ function Login() {
   }
 
   return (
-    <>
+    <div>
         <img src="/assets/bitchest_logo.png" alt="bit_logo" width="250px" />
         <form method="post" onSubmit={handleSubmit}>
             <h2>Login</h2>
@@ -36,7 +36,7 @@ function Login() {
 
             <button type="submit">Login</button>
         </form>
-    </>
+    </div>
   )
 }
 

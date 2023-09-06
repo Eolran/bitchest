@@ -1,10 +1,24 @@
+import React, { useState, useEffect } from 'react'
 import '../assets/App.css'
 
+import getCurrencies from '../services/api.service';
+
 function Infobar() {
+  
+  const [currencies, setCurrencies] = useState([]);
+  useEffect(() => {
+    getCurrencies().then((res) => {
+      setCurrencies(res);
+    });
+  }, []);
+
   return (
     <div className='infobar'>
         <ul>
-            <li><a href="">Créer une liste des 10 cryptos (quand on clic dessus on a une charte graphique d'évolution)</a></li>
+            {currencies.map((curr) => (
+                <li key={curr.id}><a href={"/charts/"+curr.id}>{curr.name}</a></li>
+              ))
+            }
         </ul>
     </div>
   )

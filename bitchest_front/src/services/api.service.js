@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const handleLogout = async (e) => {
+export const handleLogout = async (e) => {
     e.preventDefault()
     console.log('logout')
     axios.defaults.withCredentials = true;
@@ -14,4 +14,8 @@ const handleLogout = async (e) => {
     }
 }
 
-export default handleLogout;
+export default async function getCurrencies() {
+    const response = await axios.get('http://localhost:8000/api/currencies')
+    console.log(response.data)
+    return response.data
+}

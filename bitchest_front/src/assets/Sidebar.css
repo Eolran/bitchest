@@ -1,6 +1,6 @@
 .sidebar {
     width: 20em;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     place-items: center;
@@ -12,10 +12,15 @@
     margin-bottom: 20%;
 }
 
+.insideSidebar {
+    position: fixed;
+}
+
 .infobar {
     background-color: rgb(50, 50, 50);
     border-bottom: 2px black solid;
     width: 100%;
+    position: fixed;
 }
 .infobar ul {
     list-style: none;

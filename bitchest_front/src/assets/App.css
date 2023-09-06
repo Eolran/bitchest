@@ -4,8 +4,23 @@
   text-align: center;
 }
 
-.card {
-  padding: 2em;
+.w-100vw {
+  width: 100vw;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.currCard {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgb(50, 50, 50);
+  box-shadow: 0 2px 2px grey;
+  width: 40%;
+  height: 250px;
 }
 
 .d-flex {
@@ -14,4 +29,32 @@
 
 .flex-row {
   flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.screenHeight {
+  min-height: 100vh;
 }

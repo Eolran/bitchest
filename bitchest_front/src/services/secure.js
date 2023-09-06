@@ -1,36 +1,14 @@
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-}
+import axios from 'axios'
 
+async function getUser() {
+    axios.defaults.withCredentials = true;
+    const response = await axios.get('http://localhost:8000/api/user');
 
-function getXSRFToken() {
-    let token = getCookie("XSRF-TOKEN");
-    if (token == "" || token == null || token == undefined) {
-        return "";
+    if (response.status !== 200) {
+        window.location.href = 'http://localhost:5173/login'
     } else {
-        return token;
+        return "ok"
     }
 }
 
-function CheckXSRF() {
-    let token = getXSRFToken();
-    if (token == "") {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-export default CheckXSRF
+export default getUser;
