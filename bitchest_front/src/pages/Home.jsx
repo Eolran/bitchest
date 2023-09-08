@@ -3,35 +3,47 @@ import '../assets/App.css'
 import Sidebar from "../components/Sidebar";
 
 import { useState, useEffect } from 'react';
-import getCurrencies from '../services/api.service';
-import getUser from '../services/secure';
+import { getQuotations } from '../services/api.service';
 
 function Home() {
   const [currencies, setCurrencies] = useState([]);
-  // const [users, setUsers] = useState([]);
-  // useEffect(() => {
-  //   getUsers().then((res) => {
-  //     setUsers(res);
-  //   });
-  // }, []);
   useEffect(() => {
-    getCurrencies().then((res) => {
-      setCurrencies(res);
+    getQuotations().then((res) => {
+      try {
+        console.log(res);
+        setCurrencies(res);
+      } catch (error) {
+        
+      }
     });
   }, []);
+
+
 
   return (
     <div className='d-flex flex-row w-100vw'>
         <Sidebar />
         <div className='w-100 screenHeight'>
             <div className='mt-3'>
-              <ul>
-                {/* {users.forEach(user => {
-                  <li>{user.name} a le plus de {currencies[0].name}</li>
-                })} */}
-              </ul>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Nom</th>
+                    <th>Symbol</th>
+                    <th>Prix</th>
+                    <th>Changement 24h</th>
+                  </tr>
+                {currencies.map((currency) => (
+                  <tr key={currency.id}>
+                    <td>{currency.name}</td>
+                    <td>{currency.code}</td>
+                    <td>{currency.quotations[29].count}$</td>
+                    <td>{Math.round(((currency.quotations[currency.quotations.length-1].count / currency.quotations[currency.quotations.length-2].count)-1)*100)}%</td>
+                  </tr>
+                ))}
+                </tbody>
+              </table>
             </div>
-            Créer un tableau avec une entrée par user qui possède le plus de crypto-monnaie (10 entrées max) (clic sur le nom pour afficher le portefeuille complet du user)
         </div>
     </div>
   )
