@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\QuotationsController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\TransactionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CurrenciesController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,13 @@ use App\Http\Controllers\CurrenciesController;
 */
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+    return User::with('wallet')->find($request->user()->id);
 });
 
-Route::get('/currencies', [CurrenciesController::class, 'index']);
-Route::get('/quotations', [CurrenciesController::class, 'indexWithQuotations']);
-Route::get('/currencies/{id}', [CurrenciesController::class, 'showWithQuotations']);
+Route::middleware(['auth:sanctum'])->get('/users', [Controller::class, 'index']);
+
+Route::middleware(['auth:sanctum'])->get('/currencies', [CurrenciesController::class, 'index']);
+Route::middleware(['auth:sanctum'])->get('/quotations', [CurrenciesController::class, 'indexWithQuotations']);
+Route::middleware(['auth:sanctum'])->get('/currencies/{id}', [CurrenciesController::class, 'showWithQuotations']);
+
+// Route::post('/newtransaction', [TransactionsController::class, 'newTransaction']);

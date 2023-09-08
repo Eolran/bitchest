@@ -22,6 +22,13 @@ class DatabaseSeeder extends Seeder
             'admin_state' => true,
             'dollars_wallet' => 448.54,
         ]);
+        DB::table('users')->insert([
+            'name' => 'Thierry Tranchina',
+            'email' => 'rdad@dev.com',
+            'password' => Hash::make('dev'),
+            'admin_state' => false,
+            'dollars_wallet' => 99999,
+        ]);
         User::factory()->count(10)->create();
 
         $this->call(CurrenciesSeeder::class);

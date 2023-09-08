@@ -17,6 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+     public function wallet()
+     {
+         return $this->hasMany(Wallet::class, 'user_id', 'id');
+     }
+
     protected $fillable = [
         'name',
         'email',
