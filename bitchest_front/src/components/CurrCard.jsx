@@ -9,13 +9,11 @@ function CurrCard(props) {
     for (let i = 29; i > 19; i--) {
         countArray.push(quotations[i].count); 
     }
-    console.log(countArray);
 
     let dateArray = [];
     for (let i = 29; i > 19; i--) {
         dateArray.push(quotations[i].date); 
     }
-    console.log(dateArray);
 
 
     var options = {
@@ -46,7 +44,7 @@ function CurrCard(props) {
     return (
         <div key={props.code} className='currCard'>
             <img src={props.logo} alt="" />
-            <a href={"./charts/"+props.id}>{props.name} </a>
+            <a href={"./"+props.id}>{props.name} </a>
             <Chart
                 options={options}
                 series={options.series}
