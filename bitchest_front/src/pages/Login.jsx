@@ -12,7 +12,8 @@ function Login() {
 
     axios.defaults.withCredentials = true;
     await axios.get('http://localhost:8000/sanctum/csrf-cookie');
-    const response = await axios.post('http://localhost:8000/login', {
+    try {
+      const response = await axios.post('http://localhost:8000/login', {
       email: login,
       password: password
     });
@@ -20,7 +21,10 @@ function Login() {
     if (response.status === 202) {
       localStorage.setItem('user', JSON.stringify(response.data.user))
       window.location.href = 'http://localhost:5173/home'
-    } else {
+    }
+      
+    } catch (error) {
+      console.error(error);
       alert('Erreur lors de la connexion')
     }
   }
