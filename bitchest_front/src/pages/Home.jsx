@@ -1,7 +1,6 @@
 import '../assets/App.css'
 
 import Sidebar from "../components/Sidebar";
-import Infobar from "../components/Infobar";
 
 import { useState, useEffect } from 'react';
 import getCurrencies from '../services/api.service';
@@ -25,7 +24,6 @@ function Home() {
     <div className='d-flex flex-row w-100vw'>
         <Sidebar />
         <div className='w-100 screenHeight'>
-            <Infobar />
             <div className='mt-3'>
               <ul>
                 {/* {users.forEach(user => {
