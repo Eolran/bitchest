@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("currency_id");
             $table->float("count", 8, 2);
-            $table->string("date");
+            $table->unsignedBigInteger("date");
             $table->timestamps();
 
             $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');

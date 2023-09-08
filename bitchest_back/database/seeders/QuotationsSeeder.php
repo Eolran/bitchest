@@ -37,18 +37,21 @@ class QuotationsSeeder extends Seeder
     {
         $currencies = Currencies::all("*");
         $currencies->each(function ($currency) {
+            $currentDate = strtotime(date('Y-m-d'));
             $currentPrice = 0;
-            for ($i=0; $i < 10; $i++) { 
-                if ($i === 0) {
+            for ($i=29; $i >= 0; $i--) { 
+                if ($i === 29) {
                     $currentPrice += $this->getFirstCotation($currency->name);
                 }
                 else {
                     $currentPrice += $this->getCotationFor($currency->name);
                 }
+                $timestamp = strtotime("-$i day", $currentDate);
+
                 $quotation = new Quotations([
                     "currency_id" => $currency->id,
                     "count" => $currentPrice,
-                    "date" => date('Y-m-d'),
+                    "date" => $timestamp * 1000,
                 ]);
                 $quotation->save();
             }

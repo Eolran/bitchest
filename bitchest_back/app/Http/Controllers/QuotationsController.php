@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quotations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class QuotationsController extends Controller
 {
@@ -12,7 +13,7 @@ class QuotationsController extends Controller
      */
     public function index()
     {
-        //
+        return Response::json(Quotations::with('currency')->get(), 200);
     }
 
     /**

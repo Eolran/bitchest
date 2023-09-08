@@ -16,6 +16,10 @@ export const handleLogout = async (e) => {
 
 export default async function getCurrencies() {
     const response = await axios.get('http://localhost:8000/api/currencies')
-    console.log(response.data)
+    return response.data
+}
+
+export async function getQuotations() {
+    const response = await axios.get('http://localhost:8000/api/quotations')
     return response.data
 }

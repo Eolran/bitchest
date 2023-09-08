@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuotationsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CurrenciesController;
@@ -20,4 +21,5 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::get('/currencies', [CurrenciesController::class, 'index']);
-Route::get('/currencies/{id}', [CurrenciesController::class, 'show']);
+Route::get('/quotations', [CurrenciesController::class, 'indexWithQuotations']);
+Route::get('/currencies/{id}', [CurrenciesController::class, 'showWithQuotations']);

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Currencies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use App\Models\Currency;
 
 class CurrenciesController extends Controller
 {
@@ -15,6 +14,11 @@ class CurrenciesController extends Controller
     public function index()
     {
         return Response::json(Currencies::all());
+    }
+
+    public function indexWithQuotations()
+    {
+        return Response::json(Currencies::with('quotations')->get(), 200);
     }
 
     /**
@@ -39,6 +43,11 @@ class CurrenciesController extends Controller
     public function show($id)
     {
         return Currencies::find($id);
+    }
+
+    public function showWithQuotations($id)
+    {
+        return Currencies::where('id', $id)->with('quotations')->first();
     }
 
     /**
