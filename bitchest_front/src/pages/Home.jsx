@@ -23,7 +23,7 @@ function Home() {
   return (
     <div className='d-flex flex-row w-100vw'>
         <Sidebar />
-        <div className='w-100 screenHeight'>
+        <div className='w-100 screenHeight ps-4'>
             <div className='mt-3'>
               <Table striped bordered hover>
                 <tbody>

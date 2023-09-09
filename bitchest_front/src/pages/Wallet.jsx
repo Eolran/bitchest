@@ -70,7 +70,7 @@ function Wallet() {
   return (
     <div className='d-flex flex-row w-100vw'>
         <Sidebar />
-        <div className='w-100'>
+        <div className='w-100 ps-4'>
             <div className='mt-3'>
               <div className='d-flex flex-row flex-wrap justify-content-around'>
                 <h1 className='mb-5'>Mon Portefeuille</h1>
@@ -107,10 +107,11 @@ function Wallet() {
                   </tbody>
                 </Table>
 
-                <div className='mt-4'>
+                <div className='my-4'>
                   <p>* Les montants sont calculés en fonction du cours actuel de la crypto-monnaie.</p>
 
                   <Chart
+                  className='mb-5'
                   options={options}
                   series={options.series}
                   type="donut"

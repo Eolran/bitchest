@@ -60,7 +60,7 @@ useEffect(() => {
   return (
     <div className='d-flex flex-row w-100vw'>
         <Sidebar />
-        <div className='w-100 screenHeight'>
+        <div className='w-100 screenHeight ps-4'>
             <div className='mt-3'>
               <Table striped bordered hover>
                 <tbody>
@@ -79,8 +79,8 @@ useEffect(() => {
                     <td>{user.admin_state == 1 ? "Administrateur" : "Utilisateur"}</td>
                     <td>
                       {/* handleUpdate(user.id, data)  handleDelete(user.id)  handleCreate(data)*/}
-                        <Button variant="primary" onClick={() => setModal("update", user)}>Modifier</Button>{' '}
-                        <Button variant="danger" onClick={() => setModal("delete", user)}>Supprimer</Button>{' '}
+                        <Button className='rounded-0 color-white border-0' style={{backgroundColor: "#1a1a1a"}} onClick={() => setModal("update", user)}>Modifier</Button>{' '}
+                        <Button className='rounded-0' variant="danger" onClick={() => setModal("delete", user)}>Supprimer</Button>{' '}
                     </td>
                   </tr>
                 ))}

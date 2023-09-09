@@ -4,6 +4,14 @@
   text-align: center;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .w-100vw {
   width: 98vw;
 }

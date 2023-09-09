@@ -18,7 +18,7 @@ function Currencies() {
   return (
     <div className='d-flex flex-row w-100vw'>
         <Sidebar />
-        <div className='w-100'>
+        <div className='w-100 ps-4'>
             <h1 className='text-center'>Currencies charts</h1>
             <div className='d-flex flex-row flex-wrap justify-content-around'>
               {quotations.map((curr) => (

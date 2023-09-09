@@ -13,7 +13,8 @@ function Sidebar() {
                 <ul className="list-unstyled">
                     <li><p>Votre solde : ${user.dollars_wallet}</p></li>
                     <li><a href="/wallet">Votre portefeuille</a></li>
-                    <li><button onClick={handleLogout}>Déconnexion</button></li>
+                    <li><a href="/charts">Les courbes actuelles</a></li>
+                    <li><button className='mt-3' onClick={handleLogout}>Déconnexion</button></li>
                 </ul>
             </div>
         </div>
