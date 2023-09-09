@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+
 import './assets/App.css'
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Currencies from "./pages/charts/Currencies";

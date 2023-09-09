@@ -1,4 +1,5 @@
 import '../assets/App.css'
+import { Table } from 'react-bootstrap';
 
 import Sidebar from "../components/Sidebar";
 
@@ -10,7 +11,6 @@ function Home() {
   useEffect(() => {
     getQuotations().then((res) => {
       try {
-        console.log(res);
         setCurrencies(res);
       } catch (error) {
         
@@ -25,7 +25,7 @@ function Home() {
         <Sidebar />
         <div className='w-100 screenHeight'>
             <div className='mt-3'>
-              <table>
+              <Table striped bordered hover>
                 <tbody>
                   <tr>
                     <th>Nom</th>
@@ -42,7 +42,7 @@ function Home() {
                   </tr>
                 ))}
                 </tbody>
-              </table>
+              </Table>
             </div>
         </div>
     </div>

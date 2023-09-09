@@ -44,7 +44,7 @@ function CurrCard(props) {
     return (
         <div key={props.code} className='currCard'>
             <img src={props.logo} alt="" />
-            <a href={"./"+props.id}>{props.name} </a>
+            <a href={"/charts/"+props.id}>{props.name} </a>
             <Chart
                 options={options}
                 series={options.series}

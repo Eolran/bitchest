@@ -1,4 +1,6 @@
 import '../../assets/App.css'
+import { Button, Table } from 'react-bootstrap';
+import FormModal from '../../components/FormModal';
 
 import Sidebar from "../../components/Sidebar";
 import { useState, useEffect } from 'react';
@@ -13,20 +15,40 @@ async function getUser() {
 }
 
 function Dashboard() {
+  const [modalShow, setModalShow] = useState(false);
+  const [status, setStatus] = useState("");
+  const [username, setUserName] = useState("");
+  const [userid, setUserId] = useState();
+  const [email, setEmail] = useState("");
+  const handleShow = () => setModalShow(true);
 
-  const [user, setUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
     getUser().then((res) => {
-        setUser(res);
+        setCurrentUser(res);
     }
     );
   }, []);
+
+  const setModal = (status, user) => {
+    if (user == undefined || user == {}) {
+      setUserName("");
+      setUserId("");
+      setEmail("");
+    } else {
+      setUserName(user.name);
+      setUserId(user.id);
+      setEmail(user.email);
+    }
+    setStatus(status);
+    handleShow();
+  }
   
 useEffect(() => {
-  if (user?.admin_state == 0) {
+  if (currentUser?.admin_state == 0) {
     window.location.href = '/home';
   }
-}, [user]);
+}, [currentUser]);
 
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -40,7 +62,7 @@ useEffect(() => {
         <Sidebar />
         <div className='w-100 screenHeight'>
             <div className='mt-3'>
-              <table>
+              <Table striped bordered hover>
                 <tbody>
                   <tr>
                     <th>Nom</th>
@@ -56,17 +78,27 @@ useEffect(() => {
                     <td>{user.dollars_wallet} $</td>
                     <td>{user.admin_state == 1 ? "Administrateur" : "Utilisateur"}</td>
                     <td>
-                        <button className='btn btn-primary'>Modifier</button>
-                        <button className='btn btn-danger'>Supprimer</button>
+                      {/* handleUpdate(user.id, data)  handleDelete(user.id)  handleCreate(data)*/}
+                        <Button variant="primary" onClick={() => setModal("update", user)}>Modifier</Button>{' '}
+                        <Button variant="danger" onClick={() => setModal("delete", user)}>Supprimer</Button>{' '}
                     </td>
                   </tr>
                 ))}
                 </tbody>
-              </table>
+              </Table>
 
-              <button>Créer un utilisateur</button>
+              <button onClick={() => setModal("create", {})}>Créer un utilisateur</button>
             </div>
         </div>
+
+        <FormModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        state={status}
+        username={username}
+        userid={userid}
+        email={email}
+        />
     </div>
   )
 }
