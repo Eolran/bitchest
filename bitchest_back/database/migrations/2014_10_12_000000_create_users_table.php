@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('admin_state')->default(false);
             $table->rememberToken();
-            $table->float("dollars_wallet", 8, 2);
+            $table->float("dollars_wallet", 8, 2)->default(0);
             $table->timestamps();
         });
     }

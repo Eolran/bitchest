@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TransactionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,10 +22,14 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return User::with('wallet')->find($request->user()->id);
 });
 
-Route::middleware(['auth:sanctum'])->get('/users', [Controller::class, 'index']);
+Route::middleware(['auth:sanctum'])->get('/users', [UsersController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->get('/currencies', [CurrenciesController::class, 'index']);
 Route::middleware(['auth:sanctum'])->get('/quotations', [CurrenciesController::class, 'indexWithQuotations']);
 Route::middleware(['auth:sanctum'])->get('/currencies/{id}', [CurrenciesController::class, 'showWithQuotations']);
+
+Route::middleware(['auth:sanctum'])->post('/createUser', [UsersController::class, 'store']);
+Route::middleware(['auth:sanctum'])->post('/updateUser/{id}', [UsersController::class, 'update']);
+Route::middleware(['auth:sanctum'])->get('/deleteUser/{id}', [UsersController::class, 'destroy']);
 
 // Route::post('/newtransaction', [TransactionsController::class, 'newTransaction']);

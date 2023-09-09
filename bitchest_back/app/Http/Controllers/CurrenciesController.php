@@ -49,28 +49,4 @@ class CurrenciesController extends Controller
     {
         return Currencies::where('id', $id)->with('quotations')->first();
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Currencies $currencies)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Currencies $currencies)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Currencies $currencies)
-    {
-        //
-    }
 }

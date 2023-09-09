@@ -16,6 +16,6 @@ class Controller extends BaseController
 
     public function index()
     {
-        return Response::json(User::all());
+        //
     }
 }
