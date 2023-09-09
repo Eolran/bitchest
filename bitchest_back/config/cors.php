@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['*'],
+    'paths' => ['api/*', 'api/admin/*', 'api/users/*', 'sanctum/csrf-cookie', '*', 'login', ],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['POST', 'GET', 'DELETE', 'PUT', '*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:5173')],
 
     'allowed_origins_patterns' => [],
 
