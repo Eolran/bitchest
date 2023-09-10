@@ -38,6 +38,7 @@ public function index()
             'email' => $formData->email,
             'password' =>  Hash::make($formData->password),
             'dollars_wallet' => $formData->dollars_wallet,
+            'admin_state' => $formData->admin_state,
         ]);
         return response("Update réussi");
     }

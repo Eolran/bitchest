@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('code')->unique();
             $table->string('logo');
-            $table->float('price', 8, 2)->default(0);
             $table->timestamps();
         });
     }
