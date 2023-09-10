@@ -41,6 +41,7 @@ export default function FormModal(props) {
                     aria-label="Email"
                     aria-describedby="createMail"
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
@@ -51,6 +52,7 @@ export default function FormModal(props) {
                     aria-label="Nom"
                     aria-describedby="createName"
                     onChange={(e) => setName(e.target.value)}
+                    required
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
@@ -61,11 +63,12 @@ export default function FormModal(props) {
                     aria-label="Mot de passe"
                     aria-describedby="createPassword"
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                     />
                 </InputGroup>
               </Modal.Body>
               <Modal.Footer>
-                <Button onClick={()=> handleCreate(formData)}>Créer un Utilisteur</Button>
+                <Button type="submit" onClick={()=> handleCreate(formData)}>Créer un Utilisteur</Button>
                 <Button onClick={props.onHide}>Fermer</Button>
               </Modal.Footer>
             </Modal>
@@ -92,7 +95,8 @@ export default function FormModal(props) {
                     aria-label="Email"
                     aria-describedby="basic-addon1"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                     required 
+                     onChange={(e) => setEmail(e.target.value)}
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
@@ -103,7 +107,8 @@ export default function FormModal(props) {
                     aria-label="Nom"
                     aria-describedby="basic-addon1"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                     required 
+                     onChange={(e) => setName(e.target.value)}
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
@@ -113,7 +118,8 @@ export default function FormModal(props) {
                     placeholder="Mot de passe"
                     aria-label="Mot de passe"
                     aria-describedby="basic-addon1"
-                    onChange={(e) => setPassword(e.target.value)}
+                     required 
+                     onChange={(e) => setPassword(e.target.value)}
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
@@ -123,7 +129,8 @@ export default function FormModal(props) {
                     placeholder="Portefeuille"
                     aria-label="Portefeuille"
                     aria-describedby="basic-addon1"
-                    onChange={(e) => setDollarsWallet(e.target.value)}
+                     required 
+                     onChange={(e) => setDollarsWallet(e.target.value)}
                     />
                 </InputGroup>
 
@@ -140,7 +147,7 @@ export default function FormModal(props) {
                 </Accordion>
               </Modal.Body>
               <Modal.Footer>
-                <Button onClick={()=> handleUpdate(props.userid, formData)}>Modifier</Button>
+                <Button type="submit" onClick={()=> handleUpdate(props.userid, formData)}>Modifier</Button>
                 <Button onClick={props.onHide}>Close</Button>
               </Modal.Footer>
             </Modal>
@@ -165,7 +172,7 @@ export default function FormModal(props) {
                 </p>
               </Modal.Body>
               <Modal.Footer>
-                <Button onClick={()=> handleDelete(props.userid)}>Suprimer</Button>
+                <Button type="submit" onClick={()=> handleDelete(props.userid)}>Suprimer</Button>
                 <Button onClick={props.onHide}>Close</Button>
               </Modal.Footer>
             </Modal>

@@ -78,14 +78,14 @@ function Currency() {
     <div className='d-flex flex-row w-100vw'>
         <Sidebar />
         <div className='w-100'>
-            <h1>{currency?.name}</h1>
+            <h1 className='my-5 underline'>{currency?.name}</h1>
 
             {currency && <Chart
                 options={options}
                 series={options.series}
                 type="line"
             />}
-            <div>
+            <div className='my-4'>
               {(user && currency) && 
               <button 
                 disabled={user?.dollars_wallet < countArray[countArray.length-1] ? true : false}

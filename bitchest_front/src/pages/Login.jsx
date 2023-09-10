@@ -42,14 +42,14 @@ function Login() {
         <img src="/assets/bitchest_logo.png" alt="bit_logo" width="250px" />
           <Form.Group className="mb-3" controlId="login">
             <Form.Label className='underline bold'>Adresse Mail</Form.Label>
-            <Form.Control type="email" placeholder="Email" onChange={(e)=>{setLogin(e.target.value)}} />
+            <Form.Control required type="email" placeholder="Email" onChange={(e)=>{setLogin(e.target.value)}} />
             <Form.Text className="text-muted">
               Nous ne partagerons jamais votre adresse mail avec un service tier.
             </Form.Text>
           </Form.Group>
           <Form.Group className="mb-3" controlId="password">
             <Form.Label className='underline bold'>Mot de passe</Form.Label>
-            <Form.Control type="password" placeholder="Mot de passe" onChange={(e)=>{setPassword(e.target.value)}} />
+            <Form.Control required type="password" placeholder="Mot de passe" onChange={(e)=>{setPassword(e.target.value)}} />
           </Form.Group>
           <Button variant="primary" type="submit">
             Connexion

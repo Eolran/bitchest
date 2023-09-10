@@ -61,8 +61,9 @@ useEffect(() => {
     <div className='d-flex flex-row w-100vw'>
         <Sidebar />
         <div className='w-100 screenHeight ps-4'>
+            <h1 className='text-center my-4'>Dashboard</h1>
             <div className='mt-3'>
-              <Table striped bordered hover>
+              <Table striped bordered hover responsive>
                 <tbody>
                   <tr>
                     <th>Nom</th>

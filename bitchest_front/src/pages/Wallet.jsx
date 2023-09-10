@@ -72,9 +72,9 @@ function Wallet() {
         <Sidebar />
         <div className='w-100 ps-4'>
             <div className='mt-3'>
-              <div className='d-flex flex-row flex-wrap justify-content-around'>
-                <h1 className='mb-5'>Mon Portefeuille</h1>
-                <Table>
+              <div className='d-flex flex-column flex-wrap justify-content-around'>
+                <h1 className='mb-5 underline'>Mon Portefeuille</h1>
+                <Table responsive >
                   <thead>
                     <tr>
                       <th>Nom</th>

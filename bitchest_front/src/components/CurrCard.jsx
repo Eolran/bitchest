@@ -44,13 +44,18 @@ function CurrCard(props) {
     return (
         <div key={props.code} className='currCard'>
             <img className='me-2 mb-2' src={props.logo} alt="" />
-            <a href={"/charts/"+props.id}>{props.name} </a>
+            <a className='' href={"/charts/"+props.id}>{props.name} </a>
             <Chart
                 options={options}
                 series={options.series}
                 type="line"
                 height={"90%"}
             />
+
+                <div className='mt-3'>
+                    <button>Acheter</button>
+                    <button>Vendre</button>
+                </div>
         </div>
       )
 }
