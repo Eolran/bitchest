@@ -111,11 +111,11 @@ function Wallet() {
                   <p>* Les montants sont calculés en fonction du cours actuel de la crypto-monnaie.</p>
 
                   <Chart
-                  className='mb-5'
+                  className='mb-5 d-flex justify-content-center'
                   options={options}
                   series={options.series}
                   type="donut"
-                  width={"100%"}
+                  width={"60%"}
                   />
                 </div>
               </div>

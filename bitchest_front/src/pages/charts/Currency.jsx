@@ -81,9 +81,11 @@ function Currency() {
             <h1 className='my-5 underline'>{currency?.name}</h1>
 
             {currency && <Chart
+                className='d-flex justify-content-center'
                 options={options}
                 series={options.series}
                 type="line"
+                width={"80%"}
             />}
             <div className='my-4'>
               {(user && currency) && 

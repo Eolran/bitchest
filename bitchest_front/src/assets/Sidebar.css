@@ -8,27 +8,10 @@
     border-right: 2px black solid;
 }
 .sidebar img {
-    width: 15em;
-    margin-bottom: 20%;
+    width: 12em;
+    margin: 10% 0;
 }
 
 .insideSidebar {
     position: fixed;
-}
-
-.infobar {
-    background-color: rgb(50, 50, 50);
-    border-bottom: 2px black solid;
-    width: 100%;
-    position: fixed;
-}
-.infobar ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    margin-top: 0;
-    padding-top: 5px;
-}
-.infobar li {
-    margin: 0 10px;
 }
