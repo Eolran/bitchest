@@ -32,4 +32,4 @@ Route::middleware(['auth:sanctum'])->post('/createUser', [UsersController::class
 Route::middleware(['auth:sanctum'])->post('/updateUser/{id}', [UsersController::class, 'update']);
 Route::middleware(['auth:sanctum'])->get('/deleteUser/{id}', [UsersController::class, 'destroy']);
 
-// Route::post('/newtransaction', [TransactionsController::class, 'newTransaction']);
+Route::middleware(['auth:sanctum'])->post('/transaction', [TransactionsController::class, 'store']);

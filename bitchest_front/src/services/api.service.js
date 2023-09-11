@@ -37,7 +37,15 @@ export async function getUsers() {
     }
 }
 
-export async function postBuy(body) {
-    const response = await axios.post('', body)
-    return response.data
+export async function sellCurrency(data) {
+    console.log(data);
+
+    axios.defaults.withCredentials = true;
+    const response = await axios.post('http://localhost:8000/api/transaction', data);
+
+    if (response.status !== 200) {
+        window.location.href = 'http://localhost:5173/login'
+    } else {
+        return response.data
+    }
 }

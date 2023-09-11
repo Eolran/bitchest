@@ -7,13 +7,48 @@ import { Table } from 'react-bootstrap';
 import Chart from "react-apexcharts";
 
 import { useState, useEffect } from 'react';
-import { getQuotations } from '../services/api.service';
+import { getQuotations, sellCurrency } from '../services/api.service';
+// import TradeModal from '../components/TradeModal';
 
 async function getUser() {
   axios.defaults.withCredentials = true;
     const response = await axios.get('http://localhost:8000/api/user')
     return response.data
 }
+
+
+function handleSell(userId, currencyId, userWallet, currencyCount, currencyPrice) {
+
+  const data = {
+    user_id: userId,
+    currency_id: currencyId,
+    dollars_count: currencyPrice * currencyCount,
+    currency_count: currencyCount,
+    transaction_type: 'sell',
+    currency_price: currencyPrice,
+    new_dollars_wallet: userWallet + currencyPrice * currencyCount
+  }
+  const response = sellCurrency(data).then((res) => {
+    console.log(res);
+  })
+
+  console.log(response);
+}
+
+// function handleBuy(userId, currencyId, userWallet, currencyCount, currencyPrice) {
+//   const data = {
+//     user_id: userId,
+//     currency_id: currencyId,
+//     dollars_wallet: userWallet,
+//     currency_count: currencyCount,
+//     transaction_type: 'buy',
+//     currency_price: currencyPrice,
+//     new_dollars_wallet: userWallet - currencyPrice * currencyCount
+//   }
+//   const response = buyCurrency(data);
+
+//   console.log(response);
+// }
 
 function Wallet() {
   const [currencies, setCurrencies] = useState([]);
@@ -45,7 +80,6 @@ function Wallet() {
       setUser(res);
     });
   }, []);
-
 
   let array = [];
 
@@ -86,16 +120,24 @@ function Wallet() {
                   </thead>
                   <tbody>
                     {array?.map((data) => (
+                      // console.log(data),
                       <tr key={data.id}>
                       <td>{data.name}</td>
                       <td>{data.code}</td>
                       <td>{data.count}</td>
                       <td>{data.amount} $</td>
                       <td>
-                        <button>Acheter</button>
-                        <button>Vendre</button>
+                        <button onClick={() => alert("L'achat sera disponible prochainement, veuillez patienter.")}>Acheter</button>
+                        {data.count == 0 ? "" : <button
+                        onClick={() => {handleSell(user.id, data.id, user.dollars_wallet, user.wallet[data.id-1].count, data.amount)}}
+                        >Vendre</button>}
                       </td>
-                    </tr>))}
+                      {/* <TradeModal
+                      userid={user.id}
+                      currencyCount={data.id}
+                      /> */}
+                    </tr>
+                    ))}
                     <tr>
                       <td><b>Total</b></td>
                       <td></td>

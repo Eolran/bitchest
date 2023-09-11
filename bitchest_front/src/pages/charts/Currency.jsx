@@ -5,23 +5,17 @@ import axios from 'axios';
 import Chart from "react-apexcharts";
 
 import { useState, useEffect } from 'react';
+import { sellCurrency } from '../../services/api.service';
+
+
+const id = window.location.href.split('/').pop();
 
 async function getCurrency() {
-    return await axios.get('http://localhost:8000/api/currencies/'+window.location.href.split('/').pop())
+    return await axios.get('http://localhost:8000/api/currencies/'+ id)
 }
 async function getUser() {
     axios.defaults.withCredentials = true;
     return await axios.get('http://localhost:8000/api/user')
-}
-
-function handleSell(user, currency) {
-  const data = {
-    user_id: user.id,
-    currency_id: currency.id,
-    count: currency.count,
-  }
-
-  console.log(data);
 }
 
 function Currency() {
@@ -39,7 +33,9 @@ function Currency() {
         setUser(res.data);
       })
     }, []);
-    
+
+    console.log(user);
+
 
   let countArray = [];
   let dateArray = [];
@@ -87,21 +83,6 @@ function Currency() {
                 type="line"
                 width={"80%"}
             />}
-            <div className='my-4'>
-              {(user && currency) && 
-              <button 
-                disabled={user?.dollars_wallet < countArray[countArray.length-1] ? true : false}
-                // countArray[countArray.length-1]
-                >
-                Acheter
-              </button>}
-              {(user && currency) && 
-              <button 
-                disabled={user.wallet[user.wallet.findIndex(element => element.id === currency.id)].count = 0 ? true : false}
-                onClick={() => handleSell({id: user.id}, {id:currency.id, count:user.wallet[user.wallet.find(element => element.id === currency.id)].count})}>
-                Vendre
-              </button>}
-            </div>
         </div>
     </div>
   )

@@ -1,10 +1,26 @@
 import '../assets/App.css'
 import '../assets/Sidebar.css'
 import {handleLogout} from '../services/api.service'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 function Sidebar() {
 
-    const user = JSON.parse(localStorage.getItem('user'));
+    const [user, setUser] = useState({});
+    async function getUser() {
+    axios.defaults.withCredentials = true;
+        const response = await axios.get('http://localhost:8000/api/user')
+        return response.data
+    }
+
+    useEffect(() => {
+        getUser().then((res) => {
+            setUser(res);
+        }
+        );
+    }, []);
+
+
     return (
         <div className='sidebar col-lg-2 col-md-3 col-sm-5 d-sm-block d-none'>
             <div className='insideSidebar col-lg-2 col-md-3 col-sm-5'>

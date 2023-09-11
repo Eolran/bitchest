@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transactions;
+use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 
 class TransactionsController extends Controller
@@ -28,7 +30,22 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = json_decode($request->getContent());
+        Transactions::create([
+            'user_id' => $formData->user_id,
+            'currency_id' => $formData->currency_id,
+            'currency_count' =>  $formData->currency_count,
+            'dollars_count' => $formData->dollars_count,
+            'transaction_type' => $formData->transaction_type,
+        ]);
+
+        User::where('id', $formData->user_id)->update([
+            'dollars_wallet' => $formData->new_dollars_wallet,
+        ]);
+        Wallet::where('user_id', $formData->user_id)->where('currency_id', $formData->currency_id)->update([
+            'count' => 0,
+        ]);
+        return response("Ajout réussi");
     }
 
     /**

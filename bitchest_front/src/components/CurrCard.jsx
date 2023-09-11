@@ -51,11 +51,6 @@ function CurrCard(props) {
                 type="line"
                 height={"90%"}
             />
-
-                <div className='mt-3'>
-                    <button>Acheter</button>
-                    <button>Vendre</button>
-                </div>
         </div>
       )
 }
